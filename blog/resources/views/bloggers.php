@@ -71,7 +71,7 @@ $resultCheck = mysqli_num_rows($result);
             </h1><button class="btn btn-primary btn-pri-custom" onclick="goUserpage(<?php echo $_SESSION['id'] ?>)">My Blogs <span class="badge badge-light"><i class="fas fa-home"></i></span></button>
 
             <div>
-               <h1><i class="fas fa-user"></i>BLOGGERS</h1>
+               <h1><i class="fas fa-user bloggers-icon"></i>BLOGGERS</h1>
                <!-- <table class="table table-hover">
                  <thead>
                    <tr>
@@ -101,6 +101,7 @@ $resultCheck = mysqli_num_rows($result);
 
          </div>
          <div class="col-md-4 space-top">
+            <?php include "../includes/welcome-msg.php";?>   
             <div class="card my-4">
              <h5 class="card-header">Search</h5>
                 <div class="card-body">

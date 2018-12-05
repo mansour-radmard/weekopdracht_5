@@ -83,6 +83,7 @@ $resultCheck = mysqli_num_rows($result);
          </form>
       </div>
       <div class="col-md-4 space-top">
+         <?php include "../includes/welcome-msg.php";?>   
         <div class="card my-4">
           <h5 class="card-header">Search</h5>
           <div class="card-body">

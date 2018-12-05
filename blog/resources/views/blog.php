@@ -5,14 +5,14 @@ include_once "../lib/config.php"; // Server and database configuration
 
 $id = $_GET['id'];
 $query = "SELECT users.first_name, users.last_name, users.role, posts.id, posts.title,
-          posts.content, posts.user_id, posts.date, categories.name, comments.id as comment_id, comments.comment, comments.date
+          posts.content, posts.user_id, posts.date, categories.name, comments.id as comment_id, comments.comment, comments.user, comments.date
           FROM posts
-          INNER JOIN
+          LEFT JOIN
           posts_categories ON posts.id = posts_categories.post_id
-          INNER JOIN comments ON posts.id = comments.post_id
-          INNER JOIN
+          LEFT JOIN comments ON posts.id = comments.post_id
+          LEFT JOIN
           categories ON posts_categories.category_id = categories.id
-          INNER JOIN
+          LEFT JOIN
           users ON posts.user_id = users.id
           WHERE posts.id = '$id'";
 
@@ -21,12 +21,12 @@ $result = mysqli_query($conn, $query);
 
 
 $blogs = [];
-
+// echo "<pre>";
 while ($row = $result->fetch_assoc()) {
    $blogId = $row['id'];
 
    if (array_key_exists($blogId, $blogs)) {
-         $blogs[$blogId]['comments'][$row['comment_id']] = $row['comment']; //comment -> [comment, date]
+         $blogs[$blogId]['comments'][$row['comment_id']] = ['comment' => $row['comment'], 'date' => $row['date'], 'user' => $row['user'], 'comment_id' => $row['comment_id']]; //comment -> [comment, date]
       } else {
          $blogs[$blogId] = $row;
          $blogs[$blogId]['comments'][$row['comment_id']] = $row['comment'];
@@ -34,9 +34,9 @@ while ($row = $result->fetch_assoc()) {
 }
 
 
-// echo "<pre>";
+
 // var_dump($blogs); die();
-//
+
 //
 // $resultArr = mysqli_fetch_assoc($result);
 //
@@ -127,6 +127,7 @@ while ($row = $result->fetch_assoc()) {
          </div>
       </div>
       <div class="col-md-4 space-top">
+         <?php include "../includes/welcome-msg.php";?>
          <div class="card my-4">
            <h5 class="card-header">Search</h5>
             <div class="card-body">
@@ -168,9 +169,12 @@ while ($row = $result->fetch_assoc()) {
                          <?php foreach ($value['comments'] as $com) { ?>
                             <div class="comment-box text-center">
                             <small class="pull-right text-muted">
-                               <strong class="pull-left primary-font text-center">Guest</strong>
-                               <span class="glyphicon glyphicon-time text-center"></span>Sep 11, 11:53 AM</small><span class="pull-right" style="float: right"><i class="fas fa-trash-alt"></i></span>
-                                <li class="ui-state-default text-center"><?php echo $com; ?></li><br />
+                               <strong class="pull-left primary-font text-center"><?php echo $com['user']; ?></strong>
+                               <span class="glyphicon glyphicon-time text-center"></span><?php echo $com['date']; ?></small><?php if($_SESSION['logged']) { ?>
+                               <a href="/weekopdracht_5/blog/resources/lib/delete-comment.php?idComment=<?php echo $com['comment_id'];?>&id=<?php echo $id; ?>"><span class="pull-right" style="float: right"><i class="fas fa-trash-alt"></i></span> </a><?php
+                              }
+                               ?>
+                                <li class="ui-state-default text-center"><?php echo $com['comment']; ?></li><br />
                                 <div style="float: left;">
                                    <i style="margin-right: 3rem;"><a onclick="clickLike()"><i class="far fa-thumbs-up"></a></i><span class="thumbs-up-int" id="like">0</span></i><a onclick="clickDislike">
                                       <i class="far fa-thumbs-down"></i></a><span class="thumbs-down-int" id="dislike">0</span>
@@ -194,6 +198,12 @@ while ($row = $result->fetch_assoc()) {
 
                <div class="media media-post">
                   <form class="blog-form" action="../lib/send_comment.php" method="POST">
+
+                     <input name="user_name" value="<?php if($_SESSION['logged']){ echo $_SESSION['username'];
+                                                         }else{ echo "Guest"; }?>" hidden>
+
+
+
                      <input name="id" value="<?php echo $id; ?>" hidden>
                      <div class="media-body">
                         <textarea class="form-control" placeholder="Write a nice comment or leave this blog..." rows="4" name="comment"></textarea>

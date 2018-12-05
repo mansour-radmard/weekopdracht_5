@@ -288,5 +288,13 @@ i.fas.fa-user-circle.blogger-profile-avatar {
 
 div.text-center.pro-text p {
    line-height: 2rem;
-    font-size: 105%;
+   font-size: 105%;
+}
+
+i.bloggers-icon {
+   margin-right: 1rem;
+}
+
+.welcome-msg {
+   color: #0077ff;
 }

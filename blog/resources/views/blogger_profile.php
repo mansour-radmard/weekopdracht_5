@@ -5,20 +5,15 @@ include_once "../lib/config.php"; // Server and database configuration
 
 $id = $_GET['id'];
 
-$query = "SELECT first_name, last_name, email, username, posts.title FROM users
-
-JOIN posts
-ON users.id = posts.user_id = '$id'
-
- -- WHERE id = '$id'";
+$query = "SELECT first_name, last_name, email, username FROM users WHERE id = '$id'";
 
 $result = mysqli_query($conn, $query);
 
-$row = mysqli_fetch_assoc($result);
-
-echo "<pre>";
-var_dump($row);
-die();
+// $row = mysqli_fetch_assoc($result);
+//
+// echo "<pre>";
+// var_dump($row);
+// die();
 
 $resultCheck = mysqli_num_rows($result);
 
@@ -136,6 +131,7 @@ $resultCheck = mysqli_num_rows($result);
         </div>
       </div>
       <div class="col-md-4 space-top">
+         <?php include "../includes/welcome-msg.php";?>   
          <div class="card my-4">
            <h5 class="card-header">Search</h5>
             <div class="card-body">
