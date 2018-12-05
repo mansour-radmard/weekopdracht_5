@@ -235,3 +235,58 @@ ul.blog-share li {
 .blog-form {
    width: 100%;
 }
+
+.blog-comments {
+   background-color: #dee2e6;
+   padding: 0.5rem;
+   border-bottom: 1px solid #000;
+}
+
+.comment-box {
+   border: 1px solid #ccc;
+   padding: 2rem;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   width: 70%;
+}
+
+.card-footer-custom {
+   border: 1px solid rgba(0,0,0,.125);
+}
+
+i.fas.fa-trash-alt {
+   color: #dc3545;
+}
+
+i.far.fa-thumbs-up {
+   color: #007bff
+}
+
+span.thumbs-up-int {
+   margin-left: 0.5rem;
+   color: #007bff;
+}
+
+span.thumbs-down-int {
+   margin-left: 0.5rem;
+   color: #007bff;
+}
+
+.profile-card {
+   box-shadow: 5px 5px 25px 0 rgba(46,61,73,.2);
+   padding: 2rem;
+   text-align: center;
+}
+
+h2.profile-title {
+   margin-bottom: 20px;
+}
+
+i.fas.fa-user-circle.blogger-profile-avatar {
+   font-size: 450%;
+   margin-bottom: 2rem;
+}
+
+div.text-center.pro-text p {
+   line-height: 2rem;
+    font-size: 105%;
+}

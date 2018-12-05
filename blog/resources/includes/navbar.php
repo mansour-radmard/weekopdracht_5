@@ -11,17 +11,17 @@ session_start();
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/blog/index.php">Home</a>
+            <a class="nav-link" href="/weekopdracht_5/blog/index.php">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="/weekopdracht_5/blog/resources/views/bloggers.php">Bloggers</a>
           </li>
           <?php if (!$_SESSION['logged']) {?>
           <li class="nav-item">
-            <a href="/blog/resources/views/sign_up.php" class="nav-link">Sign up <i class="fas fa-user-plus"></i></a>
+            <a href="/weekopdracht_5/blog/resources/views/sign_up.php" class="nav-link">Sign up <i class="fas fa-user-plus"></i></a>
           </li> <?php } ?>
           <?php if ($_SESSION['logged']) {?>
           <li class="nav-item">
@@ -29,8 +29,8 @@ session_start();
           </li>
           <?php } else {?>
           <li class="nav-item">
-            <a class="nav-link" href="/blog/resources/views/login_page.php">Login <i class="fas fa-user-lock"></i></a>
-          </li>
+            <a class="nav-link" href="/weekopdracht_5/blog/resources/views/login_page.php">Login <i class="fas fa-user-lock"></i></a>
+         </li>
           <?php }?>
         </ul>
       </div>
@@ -39,6 +39,6 @@ session_start();
 
   <script>
     function logout() {
-      location.href = "/blog/resources/lib/logout.php"
+      location.href = "/weekopdracht_5/blog/resources/lib/logout.php"
     }
   </script>

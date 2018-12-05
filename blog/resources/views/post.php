@@ -113,7 +113,7 @@ $resultCheck = mysqli_num_rows($result);
 <script>
    // logout function
    function logout() {
-      location.href = "/blog/resources/lib/logout.php"
+      location.href = "/weekopdracht_5/blog/resources/lib/logout.php"
    }
 </script>
 

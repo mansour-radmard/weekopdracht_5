@@ -2,28 +2,29 @@
 session_start();
 include_once "../lib/config.php";
 
-// the id of the topic
-$id = $_GET['category_id'];
 
-// the query to show blogs based on specific topic
-$query = "SELECT posts.id, posts.title,
-         posts.content, posts.user_id, posts.date, categories.name, users.first_name, users.last_name
-         FROM posts
-         JOIN posts_categories
-         ON posts.id = posts_categories.post_id
-         JOIN users
-         ON  posts.user_id = users.id
-         JOIN categories
-         ON posts_categories.category_id = categories.id
-         WHERE posts_categories.category_id ='$id' ORDER BY posts.date DESC;
-         ";
+$query = "SELECT * FROM users ORDER BY id ASC";
+// the id of the topic
+// $id = $_GET['category_id'];
+//
+// // the query to show blogs based on specific topic
+// $query = "SELECT posts.id, posts.title,
+//          posts.content, posts.user_id, posts.date, categories.name, users.first_name, users.last_name
+//          FROM posts
+//          JOIN posts_categories
+//          ON posts.id = posts_categories.post_id
+//          JOIN users
+//          ON  posts.user_id = users.id
+//          JOIN categories
+//          ON posts_categories.category_id = categories.id
+//          WHERE posts_categories.category_id ='$id' ORDER BY posts.date DESC;
+//          ";
 
 // perfoms the mysql query on databse with given database and server configuration
 $result = mysqli_query($conn, $query);
 
-// Check number of rows received from database
+// Check number of rows received from SQLiteDatabase
 $resultCheck = mysqli_num_rows($result);
-
 ?>
 
 <!DOCTYPE html>
@@ -66,30 +67,38 @@ $resultCheck = mysqli_num_rows($result);
    <div class="container">
       <div class="row">
          <div class="col-md-8">
-            <h1 class="my-4">Blog / <small>CodeGorilla / Blogs on topic</small> </h1><button class="btn btn-primary btn-pri-custom" onclick="goUserpage(<?php echo $_SESSION['id'] ?>)">My Blogs <span class="badge badge-light"><i class="fas fa-home"></i></span></button>
-   <?php
-      if ($resultCheck > 0) {
-         while ($row = mysqli_fetch_assoc($result)) { ?>
-         <div class="card mb-4">
-         <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-            <div class="card-body">
-            <h2 class="card-title"><?php echo $row['title']; ?> </h2>
-               <div class="card-details text-muted">
-                 Posted on <?php echo $row['date']; ?> by: <?php echo $row['first_name'] . " " . $row['last_name']; ?>
+            <h1 class="my-4">Blog / <small>CodeGorilla / Bloggers</small>
+            </h1><button class="btn btn-primary btn-pri-custom" onclick="goUserpage(<?php echo $_SESSION['id'] ?>)">My Blogs <span class="badge badge-light"><i class="fas fa-home"></i></span></button>
+
+            <div>
+               <h1><i class="fas fa-user"></i>BLOGGERS</h1>
+               <!-- <table class="table table-hover">
+                 <thead>
+                   <tr>
+                     <th scope="col">Firstname</th>
+                     <th scope="col">Lastname</th>
+                     <th scope="col">Username</th>
+                   </tr>
+                 </thead>
+                 <tbody>
+
+               </tbody>
+               </table> -->
+               <div>
+                  <?php
+                  // If number of rows are bigger than 0
+                  if ($resultCheck > 0) {
+                      while ($row = mysqli_fetch_assoc($result)) { ?>
+                     <ul>
+                     <li> <a href="/weekopdracht_5/blog/resources/views/blogger_profile.php?id=<?php echo $row['id'];?>"><?php echo $row['first_name'] ." ". $row['last_name']; ?> </a></li>
+                     </ul>
+                  <?php
+                  }
+               }
+                  ?>
                </div>
-               <div class="category"> Topic:
-                  <div class="badge badge-pill badge-info"> <?php echo $row['name']; ?> </div>
-               </div>
-               <p class="card-text"><?php echo $row['content']; ?></p>
-          </div>
-          <div class="card-footer text-muted">
-            Author: <?php echo $row['first_name'] . " " . $row['last_name']; ?>
-          </div>
-        </div>
-        <?php
-        }
-   }
-   ?>
+            </div>
+
          </div>
          <div class="col-md-4 space-top">
             <div class="card my-4">

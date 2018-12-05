@@ -25,21 +25,21 @@ session_start();
    </h6>
    <?php if ($_SESSION['logged']) { ?>
             <h6>
-               <a href="/blog/resources/views/post.php"><i class="fas fa-plus-circle"></i> Add new post </a>
+               <a href="/weekopdracht_5/blog/resources/views/post.php"><i class="fas fa-plus-circle"></i> Add new post </a>
             </h6>
          <?php
          }
    ?>
    <?php if ($_SESSION['logged']) {?>
             <h6>
-               <a href="/blog/resources/views/new_cat.php"><i class="fas fa-plus-square"></i> Add new category </a>
+               <a href="/weekopdracht_5/blog/resources/views/new_cat.php"><i class="fas fa-plus-square"></i> Add new category </a>
             </h6>
          <?php
          }
    ?>
    <?php if ($_SESSION['logged'] && $_SESSION['role'] == $row = 'admin') { ?>
             <h6>
-               <a href="/blog/resources/views/admin.php"><i class="fas fa-users"></i>Blog users </a>
+               <a href="/weekopdracht_5/blog/resources/views/admin.php"><i class="fas fa-users"></i>Blog users </a>
             </h6>
          <?php
          }

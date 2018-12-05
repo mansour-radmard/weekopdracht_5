@@ -41,7 +41,7 @@ function loadTopic(id){
          category_id: id,
       }
    });
-   window.location.href = '/blog/resources/views/blog_on_topic.php?category_id=' + id;
+   window.location.href = '/weekopdracht_5/blog/resources/views/blog_on_topic.php?category_id=' + id;
 }
 
 </script>

@@ -1,4 +1,4 @@
 <?php
 session_start();
 session_destroy();
-header('Location: /blog/index.php');
+header('Location: /weekopdracht_5/blog/index.php');

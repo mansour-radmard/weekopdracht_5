@@ -120,7 +120,7 @@ while ($row = $result->fetch_assoc()) {
 
             </div>
 
-            <div class="card-footer text-muted">
+            <div class="card-footer text-muted card-footer-custom">
                Author: <?php echo $value['first_name'] . " " . $value['last_name']; ?>
 
             </div>
@@ -145,12 +145,12 @@ while ($row = $result->fetch_assoc()) {
     <div class="row">
       <div class="col-md-8">
          <div class="title" id="comments">
-                <h3>Comments Area</h3>
+               <i class="far fa-comment-alt"></i> <h3>Comments Area</h3>
          </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-8" align="center">
          <div class="media-area">
             <div class="media">
                <a class="pull-left" href="#paper-kit">
@@ -159,15 +159,39 @@ while ($row = $result->fetch_assoc()) {
                   </div> -->
                </a>
                <div class="media-body">
-               <!-- <h5 class="media-heading">John Wayne</h5> -->
-               <div class="pull-right">
+                  <hr data-brackets-id="12673">
+                  <ul data-brackets-id="12674" id="sortable" class="list-unstyled ui-sortable">
+                      <!-- <strong class="pull-left primary-font text-center">Guest</strong>
+                      <small class="pull-right text-muted">
+                         <span class="glyphicon glyphicon-time text-center"></span>Sep 11, 11:53 AM</small> -->
+                      </br>
+                         <?php foreach ($value['comments'] as $com) { ?>
+                            <div class="comment-box text-center">
+                            <small class="pull-right text-muted">
+                               <strong class="pull-left primary-font text-center">Guest</strong>
+                               <span class="glyphicon glyphicon-time text-center"></span>Sep 11, 11:53 AM</small><span class="pull-right" style="float: right"><i class="fas fa-trash-alt"></i></span>
+                                <li class="ui-state-default text-center"><?php echo $com; ?></li><br />
+                                <div style="float: left;">
+                                   <i style="margin-right: 3rem;"><a onclick="clickLike()"><i class="far fa-thumbs-up"></a></i><span class="thumbs-up-int" id="like">0</span></i><a onclick="clickDislike">
+                                      <i class="far fa-thumbs-down"></i></a><span class="thumbs-down-int" id="dislike">0</span>
+                                </div>
+                            </div>
+                            </br>
+
+                      <?php
+                     }
+                      ?>
+
+
+                      </br>
+                  </ul>
+               <!-- <div class="pull-right">
                   <h6 class="text-muted">Sep 11, 11:53 AM</h6>
-               </div>
-               <?php foreach ($value['comments'] as $com) { ?>
-                  <p><?php echo $com; ?></p>
-               <?php
-               }
-                ?>
+               </div> -->
+
+                  <!-- <span class="text-muted">Guest wrote:</span>
+                  <p class="blog-comments"></p> -->
+
                <div class="media media-post">
                   <form class="blog-form" action="../lib/send_comment.php" method="POST">
                      <input name="id" value="<?php echo $id; ?>" hidden>
@@ -185,8 +209,10 @@ while ($row = $result->fetch_assoc()) {
                </div>
             </div> <!-- end media -->
          </div>
+
       </div>
     </div>
+
   </div>
 <?php include "../includes/footer.php";?>
 
@@ -240,6 +266,25 @@ while ($row = $result->fetch_assoc()) {
       });
       window.location.href = 'resources/views/user_page.php?user_id=' + id;
     }
+
+   var clicks = 0
+   function clickLike () {
+     clicks++
+     var likes = document.getElementById('like')
+     likes.innerHTML = clicks
+   }
+   // var button = document.getElementById('like')
+   // button.addEventListener('likeBtn', clickHandler)
+
+   var clicksNo = 0
+   function clickDislike () {
+     clicksNo++
+     var dislikes = document.getElementById('dislike')
+     dislikes.innerHTML = clicksNo
+   }
+   // var button = document.getElementById('clickMe')
+   // button.addEventListener('disBtn', clickHandler)
+
   </script>
 
 </body>

@@ -168,18 +168,18 @@ $resultCheck = mysqli_num_rows($result);
             edit_content: content
          }
       });
-      window.location.href = 'resources/views/edit.php?edit_id=' + id;
+      window.location.href = '/weekopdracht_5/blog/resources/views/edit.php?edit_id=' + id;
     }
 
     function goUserpage(id) {
       $.ajax({
          type: 'POST',
-         url: 'resources/views/user_page.php',
+         url: '/weekopdracht_5/blog/resources/views/user_page.php',
          data: {
          user_id: id,
          }
       });
-      window.location.href = 'resources/views/user_page.php?user_id=' + id;
+      window.location.href = '/weekopdracht_5/blog/resources/views/user_page.php?user_id=' + id;
     }
   </script>
 

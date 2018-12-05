@@ -145,7 +145,7 @@ $resultCheck = mysqli_num_rows($result);
       if (confirm('Are you sure to delete this blog?')) {
          $.ajax({
             type: 'POST',
-            url: '/blog/resources/lib/delete_post.php',
+            url: '/weekopdracht_5/blog/resources/lib/delete_post.php',
             data: {
                delete_id: id
             }
@@ -158,26 +158,26 @@ $resultCheck = mysqli_num_rows($result);
    function editBlog(id, title, content) {
       $.ajax({
          type: 'POST',
-         url: '/blog/resources/views/edit.php',
+         url: '/weekopdracht_5/blog/resources/views/edit.php',
          data: {
             edit_id: id,
             edit_title: title,
             edit_content: content,
          }
       });
-      window.location.href = '/blog/resources/views/edit.php?edit_id=' + id;
+      window.location.href = '/weekopdracht_5/blog/resources/views/edit.php?edit_id=' + id;
     }
 
    // User page function
    function goUserpage(id) {
       $.ajax({
       type: 'POST',
-         url: '/blog/resources/views/user_page.php',
+         url: '/weekopdracht_5/blog/resources/views/user_page.php',
          data: {
             user_id: id,
         }
       });
-      window.location.href = '/blog/resources/views/user_page.php?user_id=' + id;
+      window.location.href = '/weekopdracht_5/blog/resources/views/user_page.php?user_id=' + id;
     }
   </script>
 
