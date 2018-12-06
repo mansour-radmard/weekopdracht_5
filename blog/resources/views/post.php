@@ -83,18 +83,8 @@ $resultCheck = mysqli_num_rows($result);
          </form>
       </div>
       <div class="col-md-4 space-top">
-         <?php include "../includes/welcome-msg.php";?>   
-        <div class="card my-4">
-          <h5 class="card-header">Search</h5>
-          <div class="card-body">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for...">
-              <span class="input-group-btn">
-                <button class="btn btn-secondary" type="button">Go!</button>
-              </span>
-            </div>
-          </div>
-        </div>
+         <?php include "../includes/welcome-msg.php";?>
+         <?php include "../includes/search.php";?>
         <?php include "../includes/categories.php";?>
         <?php include "../includes/side-widget.php";?>
       </div>
