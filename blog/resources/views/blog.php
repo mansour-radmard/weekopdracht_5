@@ -4,7 +4,7 @@ session_start();
 include_once "../lib/config.php"; // Server and database configuration
 
 $id = $_GET['id'];
-$query = "SELECT users.first_name, users.last_name, users.role, posts.id, posts.title,
+$query = "SELECT users.first_name, users.last_name, users.username, users.role, posts.id, posts.title,
           posts.content, posts.user_id, posts.date, categories.name, comments.id as comment_id, comments.comment, comments.user, comments.date
           FROM posts
           LEFT JOIN
@@ -169,8 +169,8 @@ while ($row = $result->fetch_assoc()) {
                          <?php foreach ($value['comments'] as $com) { ?>
                             <div class="comment-box text-center">
                             <small class="pull-right text-muted">
-                               <strong class="pull-left primary-font text-center"><?php echo $com['user']; ?></strong>
-                               <span class="glyphicon glyphicon-time text-center"></span><?php echo $com['date']; ?></small><?php if($_SESSION['logged']) { ?>
+                               <strong class="pull-left primary-font text-center"><?php echo $com['user']; ?></strong><br />
+                               <span class="glyphicon glyphicon-time text-center"></span><?php echo $com['date']; ?></small><?php if($_SESSION['logged'] && ($value['username']) === ($_SESSION['username'])) { ?>
                                <a href="/weekopdracht_5/blog/resources/lib/delete-comment.php?idComment=<?php echo $com['comment_id'];?>&id=<?php echo $id; ?>"><span class="pull-right" style="float: right"><i class="fas fa-trash-alt"></i></span> </a><?php
                               }
                                ?>

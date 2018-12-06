@@ -113,14 +113,16 @@ $resultCheck = mysqli_num_rows($result);
 ?>
       </div>
       <div class="col-md-4 space-top">
-         <?php include "resources/includes/welcome-msg.php";?>   
+         <?php include "resources/includes/welcome-msg.php";?>
         <div class="card my-4">
           <h5 class="card-header">Search</h5>
           <div class="card-body">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for...">
+               <form action="resources/lib/search.php" method="POST">
+              <input type="text" class="form-control" placeholder="Search for..." name="search">
               <span class="input-group-btn">
-                <button class="btn btn-secondary" type="button">Go!</button>
+                <button type="submit" class="btn btn-secondary" name="submit">Go!</button>
+                </form>
               </span>
             </div>
           </div>
