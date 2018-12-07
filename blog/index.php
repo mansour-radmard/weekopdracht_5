@@ -165,7 +165,7 @@ $resultCheck = mysqli_num_rows($result);
       });
       window.location.href = '/weekopdracht_5/blog/resources/views/user_page.php?user_id=' + id;
    }
-   
+
   </script>
 
 </body>
