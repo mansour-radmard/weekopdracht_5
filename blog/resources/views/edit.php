@@ -49,39 +49,37 @@ $row = mysqli_fetch_array($result);
 <body>
 <?php include "../includes/navbar.php"?>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8">
-        <h1 class="my-4">Blog / <small>CodeGorilla / Edit blog</small> </h1>
-        <button class="btn btn-primary btn-pri-custom" onclick="goUserpage(<?php echo $_SESSION['id'] ?>)">My Blogs <span class="badge badge-light"><i class="fas fa-home"></i></span></button>
-        <form action="../lib/edit_post.php" method="GET">
-          <input name="id" style="display: none;" value="<?php echo $row['id']; ?>"/>
-          <div class="card mb-4">
-            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-            <div class="card-body">
-              <label for="title">Update title</label>
-              <input type="text" class="form-control" id="edit-title" name="edit-title" value="<?php echo $row['title']; ?>">
-              <div class="card-details text-muted">
-              </div>
-              <p class="card-text">
-                <label for="new-post">Update post</label>
-               <textarea class="form-control textarea-update" type="text" id="edit-post" name="edit-post" value=""><?php echo $row['content']; ?></textarea>
-              </p>
-            </div>
-            <div class="text-center btn-sub">
-              <button type="submit" class="btn btn-info btn-custom-info" name="submit">Update</button>
-            </div>
-            <div class="card-footer text-muted">
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="col-md-4 space-top">
-         <?php include "../includes/welcome-msg.php";?>
-       <?php include "../includes/search.php";?>
-        <?php include "../includes/categories.php";?>
-        <?php include "../includes/side-widget.php";?>
-      </div>
+   <div class="container">
+      <div class="row">
+         <div class="col-md-8">
+            <h1 class="my-4">Blog / <small>CodeGorilla / Edit blog</small> </h1>
+            <button class="btn btn-primary btn-pri-custom" onclick="goUserpage(<?php echo $_SESSION['id'] ?>)">My Blogs <span class="badge badge-light"><i class="fas fa-home"></i></span></button>
+            <form action="../lib/edit_post.php" method="GET">
+               <input name="id" style="display: none;" value="<?php echo $row['id']; ?>"/>
+               <div class="card mb-4">
+                  <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                  <div class="card-body">
+                     <label for="title">Update title</label>
+                     <input type="text" class="form-control" id="edit-title" name="edit-title" value="<?php echo $row['title']; ?>">
+                     <div class="card-details text-muted"></div>
+                        <p class="card-text">
+                           <label for="new-post">Update post</label>
+                           <textarea class="form-control textarea-update" type="text" id="edit-post" name="edit-post" value=""><?php echo $row['content']; ?></textarea>
+                        </p>
+                  </div>
+                  <div class="text-center btn-sub">
+                     <button type="submit" class="btn btn-info btn-custom-info" name="submit">Update</button>
+                  </div>
+                  <div class="card-footer text-muted"></div>
+               </div>
+            </form>
+         </div>
+         <div class="col-md-4 space-top">
+            <?php include "../includes/welcome-msg.php";?>
+            <?php include "../includes/search.php";?>
+            <?php include "../includes/categories.php";?>
+            <?php include "../includes/side-widget.php";?>
+         </div>
     </div>
   </div>
 <?php include "../includes/footer.php";?>
@@ -107,6 +105,7 @@ $row = mysqli_fetch_array($result);
      });
      window.location.href = '/blog/resources/views/user_page.php?user_id=' + id;
    }
+
 </script>
 
 

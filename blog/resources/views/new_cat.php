@@ -37,26 +37,26 @@ session_start();
 <body>
 <?php include "../includes/navbar.php"?>
 
-<div class="container">
-    <div class="row">
-      <div class="col-md-8">
-        <h1 class="my-4">Blog / <small>CodeGorilla / Add new category</small> </h1>
-        <form action="../lib/send_new_cat.php" method="post">
-          <div class="form-group">
-            <label for="title">New category</label>
-            <input type="text" class="form-control" id="new_cat" name="new_cat">
-            </div>
-            <button type="submit" class="btn btn-info" name="submit">Submit</button>
-        </form>
+   <div class="container">
+       <div class="row">
+         <div class="col-md-8">
+           <h1 class="my-4">Blog / <small>CodeGorilla / Add new category</small> </h1>
+            <form action="../lib/send_new_cat.php" method="post">
+               <div class="form-group">
+                  <label for="title">New category</label>
+                  <input type="text" class="form-control" id="new_cat" name="new_cat">
+               </div>
+                  <button type="submit" class="btn btn-info" name="submit">Submit</button>
+            </form>
+         </div>
+         <div class="col-md-4 space-top">
+           <?php include "../includes/welcome-msg.php";?>
+           <?php include "../includes/search.php";?>
+           <?php include "../includes/categories.php";?>
+           <?php include "../includes/side-widget.php";?>
+         </div>
       </div>
-      <div class="col-md-4 space-top">
-         <?php include "../includes/welcome-msg.php";?>
-        <?php include "../includes/search.php";?>
-        <?php include "../includes/categories.php";?>
-        <?php include "../includes/side-widget.php";?>
-      </div>
-    </div>
-  </div>
+   </div>
 <?php include "resources/includes/footer.php";?>
 
 <!-- JQuery -->

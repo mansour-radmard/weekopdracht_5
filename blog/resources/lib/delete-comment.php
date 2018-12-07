@@ -5,7 +5,6 @@ include_once "config.php";
 $idComment = $_GET['idComment'];
 $id = $_GET['id'];
 
-
 $query = "DELETE FROM comments WHERE id='$idComment'";
 
 $result = mysqli_query($conn, $query);

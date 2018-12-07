@@ -49,7 +49,6 @@ $resultCheck = mysqli_num_rows($result);
 <body>
 <header>
 <?php include "../includes/navbar.php"?>
-
 <div class="container">
   <?php if ($_SESSION['logged']) {?>
     <div class="alert alert-primary text-center" role="alert">
@@ -70,48 +69,47 @@ $resultCheck = mysqli_num_rows($result);
    </div>
    <div class="row text-center">
       <div class="col-md-12">
-        <?php if ($_SESSION['logged']) {?>
-         <h6 id="name">Welcome,
-         <?php echo $_SESSION['first_name'] . " " . $_SESSION['last_name']; ?></h6>
-         <?php }?><br>
+         <?php if ($_SESSION['logged']) { ?>
+            <h6 id="name">Welcome,
+               <?php echo $_SESSION['first_name'] . " " . $_SESSION['last_name']; ?>
+            </h6>
+         <?php } ?>
+         <br>
          <h6 id="date">
-          <?php echo "Today is" . " " . date("d.m.y"); ?>
-        </h6>
+           <?php echo "Today is" . " " . date("d.m.y"); ?>
+         </h6>
       </b/>
       </div>
    </div>
-
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Firstname</th>
-        <th scope="col">Lastname</th>
-        <th scope="col">Username</th>
-        <th scope="col">Email</th>
-        <th scope="col">Role</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>
+   <table class="table table-hover">
+      <thead>
+         <tr>
+            <th scope="col">Firstname</th>
+            <th scope="col">Lastname</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col">Action</th>
+         </tr>
+      </thead>
+      <tbody>
 <?php
-// If number of rows are bigger than 0
-if ($resultCheck > 0) {
-    while ($row = mysqli_fetch_assoc($result)) { // convert the received datatype object into associative array (value=>key) pair
-        ?>
-    <tr>
-      <td><?php echo $row['first_name']; ?></td>
-      <td><?php echo $row['last_name']; ?></td>
-      <td><?php echo $row['username']; ?></td>
-      <td><?php echo $row['email']; ?></td>
-      <td><?php echo $row['role']; ?></td>
-      <td><button class="btn btn-danger" onclick="deleteUser(<?php echo $row['id']; ?>)">Delete</button></td>
-    </tr>
-  <?php
-}
-}
+   if ($resultCheck > 0) {
+       while ($row = mysqli_fetch_assoc($result)) { ?>
+         <tr>
+            <td><?php echo $row['first_name']; ?></td>
+            <td><?php echo $row['last_name']; ?></td>
+            <td><?php echo $row['username']; ?></td>
+            <td><?php echo $row['email']; ?></td>
+            <td><?php echo $row['role']; ?></td>
+            <td><button class="btn btn-danger" onclick="deleteUser(<?php echo $row['id']; ?>)">Delete</button></td>
+         </tr>
+      <?php
+      }
+   }
 ?>
-  </tbody>
-  </table>
+      </tbody>
+   </table>
      <a href="add_user.php"><button class="btn btn-info">Add new user</button></a>
 </div><br />
 <?php include "../includes/footer.php";?>
@@ -139,6 +137,7 @@ if ($resultCheck > 0) {
 
       location.reload(); // reload the page after delete is completed
    }
+   
 </script>
 
 </body>

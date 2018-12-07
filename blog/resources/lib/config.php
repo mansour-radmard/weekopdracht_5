@@ -5,8 +5,6 @@ $username = "root";
 $passwoord = "root";
 $dbname = "blog";
 
-// $ROOT = './';
-
 // Performs a connection with mysql server
 $conn = new mysqli($servername, $username, $passwoord, $dbname);
 

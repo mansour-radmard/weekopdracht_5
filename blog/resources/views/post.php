@@ -45,51 +45,51 @@ $resultCheck = mysqli_num_rows($result);
 <body>
 <?php include "../includes/navbar.php"?>
 
-<div class="container">
-   <div class="row">
-      <div class="col-md-8">
-        <h1 class="my-4">Blog / <small>CodeGorilla / Add new blog</small> </h1>
-        <form action="../lib/send_post.php" method="post">
-            <input name="id" value="<?php echo $_SESSION['id']; ?>" hidden>
-            <div class="form-group">
-               <label for="title">Blog title</label>
-               <input type="text" class="form-control" id="title" name="title">
-            </div>
-            <div class="form-group">
-               <label for="new-post">Post</label>
-               <textarea class="form-control textarea-new-post" type="text" id="new-post" name="new-post"></textarea>
-            </div>
-            <div class="form-check">
-            <h6>Select category</h6>
-               <div class="row">
-            <?php
-               if ($resultCheck > 0) {
-                  while ($row = mysqli_fetch_assoc($result)) { ?>
-                  <div class="col-lg-6">
-                     <ul class="list-unstyled mb-0">
-                        <li>
-                           <input type="checkbox" class="form-check-input" id="cat_name" name="cat_name[]" value="<?php echo $row['id']; ?>">
-                           <label class="form-check-label" for="cat_name"><?php echo $row['name']; ?></label>
-                        </li>
-                     </ul>
-                  </div>
-                  <?php
-                  }
-               }
-            ?>
+   <div class="container">
+      <div class="row">
+         <div class="col-md-8">
+            <h1 class="my-4">Blog / <small>CodeGorilla / Add new blog</small> </h1>
+            <form action="../lib/send_post.php" method="post">
+               <input name="id" value="<?php echo $_SESSION['id']; ?>" hidden>
+               <div class="form-group">
+                  <label for="title">Blog title</label>
+                  <input type="text" class="form-control" id="title" name="title">
                </div>
-            </div>
-               <button type="submit" class="btn btn-info btn-space-top" name="submit">Submit</button>
-         </form>
+               <div class="form-group">
+                  <label for="new-post">Post</label>
+                  <textarea class="form-control textarea-new-post" type="text" id="new-post" name="new-post"></textarea>
+               </div>
+               <div class="form-check">
+               <h6>Select category</h6>
+                  <div class="row">
+               <?php
+                  if ($resultCheck > 0) {
+                     while ($row = mysqli_fetch_assoc($result)) { ?>
+                     <div class="col-lg-6">
+                        <ul class="list-unstyled mb-0">
+                           <li>
+                              <input type="checkbox" class="form-check-input" id="cat_name" name="cat_name[]" value="<?php echo $row['id']; ?>">
+                              <label class="form-check-label" for="cat_name"><?php echo $row['name']; ?></label>
+                           </li>
+                        </ul>
+                     </div>
+                     <?php
+                     }
+                  }
+               ?>
+                  </div>
+               </div>
+                  <button type="submit" class="btn btn-info btn-space-top" name="submit">Submit</button>
+            </form>
+         </div>
+         <div class="col-md-4 space-top">
+            <?php include "../includes/welcome-msg.php";?>
+            <?php include "../includes/search.php";?>
+            <?php include "../includes/categories.php";?>
+            <?php include "../includes/side-widget.php";?>
+         </div>
       </div>
-      <div class="col-md-4 space-top">
-         <?php include "../includes/welcome-msg.php";?>
-         <?php include "../includes/search.php";?>
-        <?php include "../includes/categories.php";?>
-        <?php include "../includes/side-widget.php";?>
-      </div>
-    </div>
-</div><br />
+   </div><br />
 <?php include "../includes/footer.php";?>
 
 <!-- JQuery -->
@@ -106,6 +106,7 @@ $resultCheck = mysqli_num_rows($result);
    function logout() {
       location.href = "/weekopdracht_5/blog/resources/lib/logout.php"
    }
+
 </script>
 
 </body>

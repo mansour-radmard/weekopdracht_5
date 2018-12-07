@@ -71,7 +71,7 @@ $resultCheck = mysqli_num_rows($result);
       if ($resultCheck > 0) {
          while ($row = mysqli_fetch_assoc($result)) { ?>
          <div class="card mb-4">
-         <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
             <div class="card-body">
             <h2 class="card-title"><?php echo $row['title']; ?> </h2>
                <div class="card-details text-muted">
@@ -88,14 +88,14 @@ $resultCheck = mysqli_num_rows($result);
         </div>
         <?php
         }
-   }
+      }
    ?>
          </div>
          <div class="col-md-4 space-top">
             <?php include "../includes/welcome-msg.php";?>
             <?php include "../includes/search.php";?>
-           <?php include "../includes/categories.php";?>
-           <?php include "../includes/side-widget.php";?>
+            <?php include "../includes/categories.php";?>
+            <?php include "../includes/side-widget.php";?>
          </div>
       </div>
    </div>

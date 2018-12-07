@@ -33,6 +33,7 @@ $resultCheck = mysqli_num_rows($result);
 
 <script>
 
+// onclick loads selected topic
 function loadTopic(id){
    $.ajax({
       type: 'POST',

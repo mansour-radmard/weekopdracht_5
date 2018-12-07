@@ -11,8 +11,7 @@ $query = "SELECT users.first_name, users.last_name, users.role, posts.id, posts.
           INNER JOIN
           categories ON posts_categories.category_id = categories.id
           INNER JOIN
-          users on posts.user_id = users.id ORDER BY posts.date DESC;
-          ";
+          users on posts.user_id = users.id ORDER BY posts.date DESC;";
 
 // perfoms the mysql query on databse with given database and server configuration
 $result = mysqli_query($conn, $query);
@@ -31,10 +30,6 @@ while ($row = $result->fetch_assoc()) {
    }
 }
 
-// var_dump($blogs);
-// die();
-// exit();
-// echo "<pre>";
 // Check number of rows received from database
 $resultCheck = mysqli_num_rows($result);
 
@@ -76,50 +71,48 @@ $resultCheck = mysqli_num_rows($result);
   <!-- Navigation -->
 <?php include "resources/includes/navbar.php";?>
   <!-- Page Content -->
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8">
-        <h1 class="my-4">Blog / <small>CodeGorilla</small> </h1><button class="btn btn-primary btn-pri-custom" onclick="goUserpage(<?php echo $_SESSION['id'] ?>)">My Blogs <span class="badge badge-light"><i class="fas fa-home"></i></span></button>
-
-   <?php
-      // Output posts
-      foreach ($blogs as $key => $val) { ?>
-       <div class="card mb-4">
-         <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-         <div class="card-body">
-         <h2 class="card-title"><?php echo $val['title']; ?> </h2>
-            <div class="card-details text-muted">
-              Posted on <?php echo $val['date']; ?> by: <?php echo $val['first_name'] . " " . $val['last_name']; ?>
+   <div class="container">
+      <div class="row">
+         <div class="col-md-8">
+            <h1 class="my-4">Blog / <small>CodeGorilla</small> </h1><button class="btn btn-primary btn-pri-custom" onclick="goUserpage(<?php echo $_SESSION['id'] ?>)">My Blogs <span class="badge badge-light"><i class="fas fa-home"></i></span></button>
+         <?php
+            // Output posts
+            foreach ($blogs as $key => $val) { ?>
+            <div class="card mb-4">
+               <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+               <div class="card-body">
+                  <h2 class="card-title"><?php echo $val['title']; ?> </h2>
+                  <div class="card-details text-muted">
+                    Posted on <?php echo $val['date']; ?> by: <?php echo $val['first_name'] . " " . $val['last_name']; ?>
+                  </div>
+                  <div class="category"> Topic:
+                  <?php
+                     // Output categories
+                     foreach ($val['categories'] as $value) {?>
+                        <div class="badge badge-pill badge-info"> <?php echo $value . " "; ?> </div>
+                     <?php
+                     }
+                  ?>
+                  </div>
+                  <p class="card-text"><?php echo substr($val['content'], 0, 350) . "......"; ?></p>
+                  <a href="resources/views/blog.php?id=<?php echo $val['id'];?>">READ MORE</a>
+               </div>
+               <div class="card-footer text-muted">
+                  Author: <?php echo $val['first_name'] . " " . $val['last_name']; ?>
+               </div>
             </div>
-            <div class="category"> Topic:
-
-   <?php
-      // Output categories
-      foreach ($val['categories'] as $value) {?>
-               <div class="badge badge-pill badge-info"> <?php echo $value . " "; ?> </div>
-      <?php
-      }
-   ?>
-            </div>
-            <p class="card-text"><?php echo substr($val['content'], 0, 350) . "......"; ?></p>
-            <a href="resources/views/blog.php?id=<?php echo $val['id'];?>">READ MORE</a>
-          </div>
-          <div class="card-footer text-muted">
-            Author: <?php echo $val['first_name'] . " " . $val['last_name']; ?>
-          </div>
-        </div>
-<?php
-   }
-?>
+            <?php
+            }
+         ?>
+         </div>
+         <div class="col-md-4 space-top">
+            <?php include "resources/includes/welcome-msg.php";?>
+            <?php include "resources/includes/search.php";?>
+           <?php include "resources/includes/categories.php";?>
+           <?php include "resources/includes/side-widget.php";?>
+         </div>
       </div>
-      <div class="col-md-4 space-top">
-         <?php include "resources/includes/welcome-msg.php";?>
-        <?php include "resources/includes/search.php";?>
-        <?php include "resources/includes/categories.php";?>
-        <?php include "resources/includes/side-widget.php";?>
-      </div>
-    </div>
-  </div>
+   </div>
 <?php include "resources/includes/footer.php";?>
 
   <!-- JQuery -->
@@ -148,8 +141,8 @@ $resultCheck = mysqli_num_rows($result);
       location.reload(); // reload the page after delete is completed
     }
 
-    // Edit blog post function
-    function editBlog(id, title, content) {
+   // Edit blog post function
+   function editBlog(id, title, content) {
       $.ajax({
          type: 'POST',
          url: 'resources/views/edit.php',
@@ -160,9 +153,9 @@ $resultCheck = mysqli_num_rows($result);
          }
       });
       window.location.href = '/weekopdracht_5/blog/resources/views/edit.php?edit_id=' + id;
-    }
+   }
 
-    function goUserpage(id) {
+   function goUserpage(id) {
       $.ajax({
          type: 'POST',
          url: '/weekopdracht_5/blog/resources/views/user_page.php',
@@ -171,7 +164,8 @@ $resultCheck = mysqli_num_rows($result);
          }
       });
       window.location.href = '/weekopdracht_5/blog/resources/views/user_page.php?user_id=' + id;
-    }
+   }
+   
   </script>
 
 </body>

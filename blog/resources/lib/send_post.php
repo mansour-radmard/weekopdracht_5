@@ -11,7 +11,6 @@ if (isset($_POST["submit"]) && !empty($_POST["title"]) && !empty($_POST["new-pos
    $cat_ids = $_POST["cat_name"];
 
    $query = "INSERT INTO posts (`title`, `content`, `user_id`) VALUES ('$title', '$new_post', '$id')";
-
    $result = mysqli_query($conn, $query);
 
    // Get the ID of inserted blog post
@@ -19,10 +18,8 @@ if (isset($_POST["submit"]) && !empty($_POST["title"]) && !empty($_POST["new-pos
 
    // Loop through each array item or category id's received from checkboxes
    foreach ($cat_ids as $cat_id) {
-
       // insert query to link new post with the categories to which it belongs
       $sql = "INSERT INTO posts_categories (`post_id`, `category_id`) VALUES ('$last_id', $cat_id)";
-
       $insert = mysqli_query($conn, $sql);
 
          if ($insert) {

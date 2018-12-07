@@ -32,57 +32,55 @@
 </head>
 
 <body>
-<header>
-   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top nav-custom">
-      <div class="container">
-        <a class="navbar-brand" href="#">
-          Blog <i class="fab fa-blogger"></i> </a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <a class="nav-link smooth-scroll" href="../../index.php">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link smooth-scroll" href="#">Login <i class="fas fa-user-lock"></i></a>
-                </li>
-              </ul>
-            </div>
-      </div>
-    </nav>
-</header>
-
-<div class="container">
-   <div class="row">
-      <div class="col-md-4 offset-md-4">
-         <div class="item-box no-shad">
-            <div class="login-form">
-               <div class="panel">
-                  <i class="fas fa-sign-in-alt"></i>
-                  <h2>Sign In</h2>
-                  <p>Please enter your username and password</p>
+   <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top nav-custom">
+         <div class="container">
+            <a class="navbar-brand" href="#">Blog <i class="fab fa-blogger"></i> </a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span></button>
+               <div class="collapse navbar-collapse" id="navbarResponsive">
+                 <ul class="navbar-nav ml-auto">
+                   <li class="nav-item">
+                     <a class="nav-link smooth-scroll" href="../../index.php">Home</a>
+                   </li>
+                   <li class="nav-item">
+                     <a class="nav-link smooth-scroll" href="#">Login <i class="fas fa-user-lock"></i></a>
+                   </li>
+                 </ul>
                </div>
-               <form id="login" action="../lib/login.php" method="POST">
-                  <div class="form-group">
-                     <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+         </div>
+      </nav>
+   </header>
+
+   <div class="container">
+      <div class="row">
+         <div class="col-md-4 offset-md-4">
+            <div class="item-box no-shad">
+               <div class="login-form">
+                  <div class="panel">
+                     <i class="fas fa-sign-in-alt"></i>
+                     <h2>Sign In</h2>
+                     <p>Please enter your username and password</p>
                   </div>
-                  <div class="form-group">
-                     <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-                  </div>
-                  <div class="forgot">
-                     <a href="#">Forgot password?</a>
-                  </div>
-                  <div class="forgot">
-                     <a href="sign_up.php">Sign up</a>
-                  </div>
-                  <button type="submit" name="submit" class="btn btn-primary">Login</button>
-               </form>
+                  <form id="login" action="../lib/login.php" method="POST">
+                     <div class="form-group">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                     </div>
+                     <div class="form-group">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                     </div>
+                     <div class="forgot">
+                        <a href="#">Forgot password?</a>
+                     </div>
+                     <div class="forgot">
+                        <a href="sign_up.php">Sign up</a>
+                     </div>
+                     <button type="submit" name="submit" class="btn btn-primary">Login</button>
+                  </form>
+               </div>
             </div>
          </div>
       </div>
    </div>
-</div>
 
 <!-- JQuery -->
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
