@@ -8,7 +8,7 @@ if (isset($_POST['submit'])) {
    $username = $_POST['username'];
    $password = $_POST['password'];
 
-   $sql = "SELECT * FROM users WHERE username='$username' AND password= '$password'";
+   $sql = "SELECT * FROM users WHERE username='$username' AND password= SHA1('$password')";
 
    $result = mysqli_query($conn, $sql);
 
