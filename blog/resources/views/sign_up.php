@@ -24,7 +24,7 @@ if(isset($_REQUEST['submit'])){
       $password_error = "Your passwords do not match!"; // if passwords don't match give error
    } else {
       $query = "INSERT INTO users (`first_name`, `last_name`, `username`, `email`, `password`, `role`)
-      VALUES ('$first_name', '$last_name', '$username', '$email', '$password', 'user')";
+      VALUES ('$first_name', '$last_name', '$username', '$email', SHA1('$password'), 'user')";
       $result = mysqli_query($conn, $query);
 
       if ($result) {

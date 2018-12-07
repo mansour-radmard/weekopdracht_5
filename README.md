@@ -2,7 +2,7 @@
 
 
 
-Implemented all mandatory user stories 
+Implemented all mandatory user stories
 
 W5-001
 
@@ -19,3 +19,7 @@ W5-006
 W5-007
 
 W5-008
+
+Also Implemented
+
+W5-010
